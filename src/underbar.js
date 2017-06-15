@@ -361,6 +361,7 @@
     var freshArray = array.slice(0,array.length);
     var currentIndex = freshArray.length, temporaryValue, randomIndex;
 
+    //do until we have no more to shuffle
     while (0 !== currentIndex){
       //select remaining element
       randomIndex = Math.floor(Math.random() * currentIndex);
