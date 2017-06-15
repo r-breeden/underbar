@@ -167,6 +167,7 @@
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
       var i = 0;
+
       if(accumulator === undefined){
         accumulator = collection[0];
         i++;
@@ -191,6 +192,7 @@
       if (wasFound) {
         return true;
       }
+
       return item === target;
     },false );
   };
@@ -206,6 +208,7 @@
         } else {
           result = iterator(item);
         }
+
         return (!!result && allTrue); 
       }, true);
   };
@@ -354,6 +357,22 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    //Fisher-Yates Shuffle
+    var freshArray = array.slice(0,array.length);
+    var currentIndex = freshArray.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex){
+      //select remaining element
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      //swap it with current element
+      temporaryValue = freshArray[currentIndex];
+      freshArray[currentIndex] = freshArray[randomIndex];
+      freshArray[randomIndex] = temporaryValue;
+    }
+
+    return freshArray;
   };
 
 
